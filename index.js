@@ -38,7 +38,7 @@ createTimer(() => console.log('Showed after 500ms'));
 function compose(...fns) {
     return (args) => {
         let result = args;
-        for (let fn of [...fns.reverse()]) {
+        for (let fn of [...fns].reverse()) {
             result = fn(result);
         }
 
@@ -58,8 +58,10 @@ function pipe(...fns) {
 }
 
 let filterNumbersAndLog = compose(
+    log,
     partial(sort, undefined, (a, b) => a > b),
     partial(filter, undefined, isNumber)
 );
 
 console.log(filterNumbersAndLog(numbers));
+
