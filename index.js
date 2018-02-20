@@ -57,7 +57,7 @@ function pipe(...fns) {
     }
 }
 
-let filterNumbersAndLog = compose(
+let filterNumbersSortAndLog = compose(
     log,
     partial(sort, undefined, (a, b) => a > b),
     partial(filter, undefined, isNumber)
