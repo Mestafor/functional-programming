@@ -18,10 +18,11 @@ const log = createLog(console.log)('LOG');
 log('message');
 
 // checker
-const is = curry((fn, value) => fn(value));
+const is = curry(require('./src/functions/is'));
 const isNumber = is((value) => typeof value === 'number');
 const isArray = is(value => value instanceof Array);
 let numbers = ['1', 2, '3', 4, 2, 6, 'asds'];
+console.log(swap(filter)(isNumber, numbers));
 let r = curry(swap(filter))(isNumber)(numbers);
 console.log(r);
 
@@ -59,9 +60,10 @@ function pipe(...fns) {
 
 let filterNumbersSortAndLog = compose(
     log,
+    (res) =>  res[0],
     partial(sort, undefined, (a, b) => a > b),
     partial(filter, undefined, isNumber)
 );
 
-console.log(filterNumbersAndLog(numbers));
+console.log(filterNumbersSortAndLog(numbers));
 
