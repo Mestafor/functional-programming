@@ -4,11 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest"
+    "test": "./node_modules/.bin/jest",
+    "test:auto": "./node_modules/.bin/jest --watch"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "jest": "^22.3.0"
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3"
   }
 }
