@@ -8,3 +8,4 @@ function delay(fn, ms) {
 let createDelay = partial(delay, undefined, 1000);
 
 createDelay(() => { console.log('Done') });
+

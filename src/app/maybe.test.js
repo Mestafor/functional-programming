@@ -15,14 +15,15 @@ describe('Maybe', () => {
         describe('ap', () => {
                 it('gets a Maybe of function and applies it to a value', () => {
                   const maybefn = Maybe(x => x * x);                  
-                  const result = Maybe(10).ap(maybefn).fold(res => res); 
+                  const result = maybefn.ap(Maybe(10)).fold(res => res); 
 
                   expect(result).toBe(100);
                 });
         });
         describe('equals', () => {
                 it('equals -> create Monat', () => {
-                  expect().toBe(100);
+                  const res = Maybe(100).fold(res => res);
+                  expect(res).toBe(100);
                 });
         });
         describe('of', () => {
