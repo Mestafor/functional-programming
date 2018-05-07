@@ -12,17 +12,25 @@ describe('Maybe', () => {
                 });
         });
 
+        
+        describe('chain', () => {
+                it('gets a Maybe of function and applies it to a value', () => {
+                  const result = Maybe.of(10).map(x=> y => x * y).ap(Maybe(20)).chain(item => Maybe(item)).fold(res => res);
+                  expect(result).toBe(200);
+                });
+        });
+
         describe('ap', () => {
                 it('gets a Maybe of function and applies it to a value', () => {
-                  const maybefn = Maybe(x => x * x);                  
-                  const result = Maybe(10).ap(maybefn).fold(res => res); 
-
-                  expect(result).toBe(100);
+                  const result = Maybe(x => y => x *y).ap(Maybe(10)).ap(Maybe(100)).fold(res => res);
+                  expect(result).toBe(1000);
                 });
         });
         describe('equals', () => {
-                it('equals -> create Monat', () => {
-                  expect().toBe(100);
+                it('equals -> compare two monads and return true if its equals', () => {
+                        const a = Maybe(10);
+                        const b = Maybe(10);
+                  expect(a.equals(b)).toBe(true);
                 });
         });
         describe('of', () => {
