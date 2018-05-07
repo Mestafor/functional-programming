@@ -1,6 +1,7 @@
 'use strict';
+const curry = require('../../functions/curry');
 
-function filter(list, fn) {
+function filter(fn, list) {
     let res = [];
     for(let i = 0, l = list.length; i < l; i++ ) {
         if(fn(list[i])) {
@@ -10,4 +11,4 @@ function filter(list, fn) {
     return res;
 }
 
-module.exports = filter;
+module.exports = curry(filter);

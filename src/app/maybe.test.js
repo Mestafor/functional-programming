@@ -15,10 +15,8 @@ describe('Maybe', () => {
         
         describe('chain', () => {
                 it('gets a Maybe of function and applies it to a value', () => {
-                  const result = Maybe.of(10).map(x=> y => x * y).ap(Maybe(20)).chain(item => Maybe(item)).fold(res => res);
-                  expect(result).toBe(200);
-                });
-        });
+                  const maybefn = Maybe(x => x * x);                  
+                  const result = maybefn.ap(Maybe(10)).fold(res => res); 
 
         describe('ap', () => {
                 it('gets a Maybe of function and applies it to a value', () => {
@@ -27,10 +25,9 @@ describe('Maybe', () => {
                 });
         });
         describe('equals', () => {
-                it('equals -> compare two monads and return true if its equals', () => {
-                        const a = Maybe(10);
-                        const b = Maybe(10);
-                  expect(a.equals(b)).toBe(true);
+                it('equals -> create Monat', () => {
+                  const res = Maybe(100).fold(res => res);
+                  expect(res).toBe(100);
                 });
         });
         describe('of', () => {
